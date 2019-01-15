@@ -176,6 +176,8 @@
 
 	</div>
 	
+	<!-- This is a good breakpoint. Put the above portion in an HTML widget at the top. Put the various widgets next.
+	Then paste the portion below into another HTML widget. -->
 	
 	<div class="ounce-main-container">
 		<div class="ounce-bottom-box-split">
@@ -196,6 +198,27 @@
 			<div class="ounce-bottom-content" id="OunceCustomTasksContainer">
 				<h3>Please complete the following performance tasks.</h3>
 				<div id="OunceCustomTasksDiv">
+				</div>
+			</div>
+		</div>
+		<div class="ounce-bottom-box-split">
+			<div class="ounce-bottom-content" id="OunceCustomBrowseContainer">
+				<h3>Browse for Training</h3>
+				<div id="OunceCustomBrowseDiv">
+				</div>
+			</div>
+		</div>
+		<div class="ounce-bottom-box-split">
+			<div class="ounce-bottom-content" id="OunceCustomMyTrainingContainer">
+				<h3>Browse My Training</h3>
+				<div id="OunceCustomMyTrainingDiv">
+				</div>
+			</div>
+		</div>
+		<div class="ounce-bottom-box-split">
+			<div class="ounce-bottom-content" id="OunceCustomCalendarContainer">
+				<h3>My Calendar</h3>
+				<div id="OunceCustomCalendarDiv">
 				</div>
 			</div>
 		</div>
@@ -221,40 +244,67 @@
 				return listCount;
 			}
 			
-			function ounceCopyAndHide(thatWidgetName, ounceCSODID, isAlist) {
+			function ounceCountTable(widgetContentID) {
+				// This fucntion uses the ID string of a native widget to count the list items inside. This works for the Featured Trainin widget.
+				var widgetElement = document.getElementById(widgetContentID + '_content').getElementsByTagName('table');
+				var listCount = widgetElement.length;
+				return listCount;
+			}
+			
+			function ounceMoveContent(thatWidgetName, ounceCSODID) {
+				var ounceCustomDiv = 'OunceCustom' + thatWidgetName + 'Div';
+				document.getElementById(ounceCustomDiv).innerHTML = document.getElementById(ounceCSODID + '_content').innerHTML; // Copies the content from the widget to the custom html
+				document.getElementById(ounceCSODID).style.display = 'none';
+			}
+			
+			function ounceMoveCalendar(thatWidgetName, ounceCSODID) {
+				var ounceCustomDiv = 'OunceCustom' + thatWidgetName + 'Div';
+				document.getElementById(ounceCustomDiv).innerHTML = document.getElementById(ounceCSODID + '_upCalendar').innerHTML; // Copies the content from the widget to the custom html
+				document.getElementById(ounceCSODID + '_divCalendar').style.display = 'none';
+			}
+			
+			function ounceCopyAndHide(thatWidgetName, ounceCSODID, widgetType) {
 				
 				var ounceCustomDiv = 'OunceCustom' + thatWidgetName + 'Div';
-				var ounceCustomDivContainer = 'OunceCustom' + thatWidgetName + 'Container'
+				var ounceCustomDivContainer = 'OunceCustom' + thatWidgetName + 'Container';
 				
-				// This function grabs the content from the native widgets and movse them to the custom made containers defined in the HTML above.
-				document.getElementById(ounceCustomDiv).innerHTML = document.getElementById(ounceCSODID + '_content').innerHTML; // Copies the content from the widget to the custom html
-				document.getElementById(ounceCSODID).style.display = 'none'; // Hides the native widget
+				ounceMoveContent(thatWidgetName, ounceCSODID);
+				
 				// These if statements use the functions defined above to determine if the widgets contain any content. If they do not, then they are
 				// hidden. This allows you to turn your widgets into calls to action. For example, instead of having a thing called "Tasks" that is
 				// always there and most of the time says "there are no tasks here", you can have something that says, "You have tasks, and here they are."
-				if (isAlist === true) {
+				if (widgetType === 0) {
 					if (ounceCountList(ounceCSODID) === 0) {document.getElementById(ounceCustomDivContainer).style.display = 'none';};
-				} else {
+				} else if (widgetType === 1) {
 					if (ounceCountLinks(ounceCSODID) === 0) {document.getElementById(ounceCustomDivContainer).style.display = 'none';};
-				}
+				} else if (widgetType === 2) {
+					if (ounceCountTable(ounceCSODID) === 0) {document.getElementById(ounceCustomDivContainer).style.display = 'none';};
+				} 
 				
-				}
+			}
 			
 			// These variables point to the ID strings of the widget elements in the CSOD welcome page. I broke them apart so that it's easier to see the
 			// cd1XX part, which changes based on the order that the widgets display, and the widget name at the end. The first and third parts are always
 			// the same.
 			
-			var ounceCSODTasksID = 'ctl00_ContentPlaceHolder1_widgetLayout_rptWidgets_' + 'ctl00' + '_widgetContainer_ctl00_pnl' + 'Tasks';
-			var ounceCSODUpcomingID = 'ctl00_ContentPlaceHolder1_widgetLayout_rptWidgets_' + 'ctl02' + '_widgetContainer_ctl00_pnl' + 'UpcomingSessions';
-			var ounceCSODFeaturedID = 'ctl00_ContentPlaceHolder1_widgetLayout_rptWidgets_' + 'ctl01' + '_widgetContainer_ctl00_pnl' + 'FeaturedTraining';		
+			var ounceCSODTasksID = 'ctl00_ContentPlaceHolder1_widgetLayout_rptWidgets_' + 'ctl01' + '_widgetContainer_ctl00_pnl' + 'Tasks';
+			var ounceCSODUpcomingID = 'ctl00_ContentPlaceHolder1_widgetLayout_rptWidgets_' + 'ctl03' + '_widgetContainer_ctl00_pnl' + 'UpcomingSessions';
+			var ounceCSODFeaturedID = 'ctl00_ContentPlaceHolder1_widgetLayout_rptWidgets_' + 'ctl02' + '_widgetContainer_ctl00_pnl' + 'FeaturedTraining';
+			var ounceCSODBrowseID = 'ctl00_ContentPlaceHolder1_widgetLayout_rptWidgets_' + 'ctl04' + '_widgetContainer_ctl00_pnl' + 'Browse';
+			var ounceCSODCalendarID = 'ctl00_ContentPlaceHolder1_widgetLayout_rptWidgets_' + 'ctl05' + '_widgetContainer_ctl00';
+			var ounceCSODMyTrainingID = 'ctl00_ContentPlaceHolder1_widgetLayout_rptWidgets_' + 'ctl06' + '_widgetContainer_ctl00_pnl' + 'MyTraining';
+			
 			// These next lines each grab the content from the native widgets and move them to the custom made container defined in the HTML above.
 			// In order for this to work properly, this code must fall below the dropped widgets on the welcome page. Othewise, the JavaScript will
 			// execute too early and nothing will happen.
 			
-			ounceCopyAndHide('Tasks', ounceCSODTasksID, false);
-			ounceCopyAndHide('Featured', ounceCSODFeaturedID, true);
-			ounceCopyAndHide('Upcoming', ounceCSODUpcomingID, false);
-						
+			ounceCopyAndHide('Tasks', ounceCSODTasksID, 1);
+			ounceCopyAndHide('Featured', ounceCSODFeaturedID, 0);
+			ounceCopyAndHide('Upcoming', ounceCSODUpcomingID, 1);
+			ounceMoveContent('Browse', ounceCSODBrowseID);
+			ounceCopyAndHide('MyTraining', ounceCSODMyTrainingID, 2);
+			ounceMoveCalendar('Calendar', ounceCSODCalendarID);
+	
 	</script>
 
 	
