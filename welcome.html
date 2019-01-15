@@ -1,0 +1,249 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Welcome Page Content</title>
+	
+	
+	
+</head>
+
+<body>
+	
+	<!-- Begin copying here. Mind the Image URLs -->
+	
+	<!-- The bottom sectin of this block of HTML contain scripts that move content from inside
+	of widgets into flexible DIV blocks. The idea being to get rid of the ugly, off-brand
+	native CSOD styles and replace them with something more flat. That means that a Task,
+	Featured, and Upcomming widget must all be placed ABOVE the HTML block on a welcome page
+	for this to work. -->
+	
+	<!-- This script adds a viewport definition to the page header. That helps mobile browsers
+	understand the proper width of the webpage is the width of the device or browser window. -->
+	
+	<script>
+		var m = document.createElement('meta'); 
+		m.name = 'viewport'; 
+		m.content = 'width=device-width, initial-scale=1'; 
+		document.head.appendChild(m);
+	</script>
+
+	
+	<!-- The stylesheet does most of the work here. I used CSS classes to define most of the
+	custom elements used in the HTML that follows. This will prevent the main CSOD stylesheet
+	from interfeering with the internal workings of the page. -->
+	
+	<style>
+	
+		/* The Main container class will center content and format text inside. */
+		.ounce-main-container {
+			align-self: center;
+			max-width: 1500px;
+			margin:0 auto;
+			margin-bottom: 18px;
+			width: 80%;
+			padding-bottom: 10px;
+			align-content: center;
+			display:table;
+			box-sizing: border-box;
+			font-size: 12pt;
+			font-family: Open Sans, Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+		}
+		
+		/* The center-box- classes split up the main calls to action in this design. They also
+		give a target for media queries below. */
+		.ounce-center-box-left {
+			width: 60%;
+			height: 100%;
+			float: left;
+			color:#75787B;
+		}
+		.ounce-center-box-right {
+			width:40%;
+			max-width: 400px;
+			height:auto;
+			margin-top: 18px;
+			float: left;
+			background-color: #efeded;
+			display: table
+		}
+		
+		/* The button and action classes organize the main calls to action. */
+		.ounce-center-box-left-content {
+			height:auto;
+			width:88%;
+			margin: 0 auto;
+			display: block;
+			float:right
+		}
+		.ounce-center-button {float:left;
+			padding:5px;
+			width: 25%;
+			max-width: 175px;
+			margin: 0 auto;
+		}
+		.ounce-center-button:hover {color: #39207C}
+		.ounce-action-button {width: 100%; height: auto}
+		.ounce-action-text {text-align: center; font-style: normal; font-weight: 700; font-size: 16pt;}
+		
+		/* The list elements on the right hand side give space for aditional calls to action. */
+		.ounce-center-list {
+			display:list-item;
+			background-color:#75787B;
+			padding:4px;
+			margin:20px;
+			list-style-type:none;
+			color:white;
+			font-weight: 600;
+			text-align: center;
+		}
+		.ounce-center-list a {color:white; font-weight: 600; text-decoration: none;}
+		.ounce-center-list:hover {background-color: #39207C}
+
+		/* The bottom boxes create responsive places for content. */
+		.ounce-bottom-box-split {
+			width:50%;
+			float:left;
+			box-sizing: border-box;
+		}
+		.ounce-bottom-content {
+			padding:4px;
+			margin:10px;
+			font-weight: 600;
+			vertical-align: middle;
+			background-color: #efeded;
+			background-repeat: no-repeat;
+			background-position: left;
+		}
+		.ounce-bottom-content h3 {margin-top: .25em; margin-bottom: .25em;}
+		
+		/* Changes for smaller desktop screens and some tablets. Mainly decreases font sizes. */
+		@media only screen and (max-width: 1200px) {
+			.ounce-center-list a {font-size: 10pt}
+			.ounce-action-text {font-size: 12pt}
+			.ounce-center-box-right {margin-top: 10px}
+		}		
+		
+		/* Main responsive breakpoint. Takes the main content splits and increases width to 100%. */
+		@media only screen and (max-width: 900px) {
+			.ounce-main-container {width: 100%}
+			.ounce-center-box-left {width: 100%}
+			.ounce-center-box-left-content {width: 88%; margin: 0 auto}
+			.ounce-center-box-right {width: 100%; max-width: inherit}
+			.ounce-bottom-box-split {width: 100%}
+			.ounce-bottom-content {background-image: none}
+		}
+		
+		/* Last breakpoint for narrow screens. May begin hiding content here. */
+		@media only screen and (max-width: 450px) {
+			.ounce-center-list {font-size: 9pt}
+			.ounce-action-text {font-size: 10pt}
+		}
+		
+	</style>
+	
+
+	
+	<div class="ounce-main-container">
+	<img src="images/training-head-x1.jpg" alt="Ounce Training and Performance for Internal Employees" style="width: 100%">
+	</div>
+	
+	<div class="ounce-main-container">
+		<div class="ounce-center-box-left">
+			<div class="ounce-center-box-left-content">
+			<div class="ounce-center-button">
+				<div class="ounce-action-text">MANAGE</div>
+				<div><a href="/MyTeam/MyTeam.aspx"><img src="images/team-w200.png" alt="Manage My Team" class="ounce-action-button"></a></div>
+				<div class="ounce-action-text">MY TEAM</div>
+			</div>
+			<div class="ounce-center-button">
+				<div class="ounce-action-text">FIND</div>
+				<div><a href="/ui/lms-learner-home/home"><img src="images/training-w200.png" alt="Find Training" class="ounce-action-button"></a></div>
+				<div class="ounce-action-text">TRAINING</div>
+			</div>
+			<div class="ounce-center-button">
+				<div class="ounce-action-text">UPDATE</div>
+				<div><a href="/phnx/driver.aspx?routename=Goals/GoalList"><img src="images/goals-w200.png" alt="Update My Goals" class="ounce-action-button"></a></div>
+				<div class="ounce-action-text">MY GOALS</div>
+			</div>
+			</div>
+		</div>
+		<div class="ounce-center-box-right">
+			<div class="ounce-center-list"><a href="/phnx/driver.aspx?routename=Social/UniversalProfile/Transcript">See Past Training</a></div>
+			<div class="ounce-center-list"><a href="/phnx/driver.aspx?routename=Social/Communities">Visit Communities</a></div>
+			<div class="ounce-center-list"><a href="https://help.csod.com/help/csod_0/OnlineHelp.htm">Find Help with CSOD</a></div>
+		</div>
+
+	</div>
+	
+	
+	<div class="ounce-main-container">
+		<div class="ounce-bottom-box-split">
+			<div class="ounce-bottom-content" id="OunceCustomFeaturedContainer">
+				<h3>Ounce Featured Training</h3>
+				<div id="OunceCustomFeaturedDiv">
+				</div>
+			</div>
+		</div>
+		<div class="ounce-bottom-box-split">
+			<div class="ounce-bottom-content" id="OunceCustomUpcomingContainer">
+				<h3>Your Scheduled Training</h3>
+				<div id="OunceCustomUpcomingDiv">
+				</div>
+			</div>
+		</div>
+		<div class="ounce-bottom-box-split">
+			<div class="ounce-bottom-content" id="OunceCustomTasksContainer">
+				<h3>Please complete the following performance tasks.</h3>
+				<div id="OunceCustomTasksDiv">
+				</div>
+			</div>
+		</div>
+	
+	</div>
+	
+	<!-- The following script moves content from the native CSOD Welcome Page Widgets to the contents
+	of the custom HTML section and then hides the original widget. -->
+	
+		<script>
+			
+			
+			function ounceCountLinks(widgetContentID) {
+				// This function uses the ID string of a natve widget to count the links inside. This works for the tasks and Upcoming Sessions widgets.
+				var widgetElement = document.getElementById(widgetContentID + '_content');
+				var linkCount = widgetElement.getElementsByClassName('link').length;
+				return linkCount;
+			}
+			
+			function ounceCountList(widgetContentID) {
+				// This fucntion uses the ID string of a native widget to count the list items inside. This works for the Featured Trainin widget.
+				var widgetElement = document.getElementById(widgetContentID + '_content').getElementsByTagName('li');
+				var listCount = widgetElement.length;
+				return listCount;
+			}
+			
+			var ounceCSODTasksID = 'ctl00_ContentPlaceHolder1_widgetLayout_rptWidgets_' + 'ctl00' + '_widgetContainer_ctl00_pnl' + 'Tasks'
+			var ounceCSODUpcomingID = 'ctl00_ContentPlaceHolder1_widgetLayout_rptWidgets_' + 'ctl02' + '_widgetContainer_ctl00_pnl' + 'UpcomingSessions'
+			var ounceCSODFeaturedID = 'ctl00_ContentPlaceHolder1_widgetLayout_rptWidgets_' + 'ctl01' + '_widgetContainer_ctl00_pnl' + 'FeaturedTraining'		
+			
+			document.getElementById('OunceCustomTasksDiv').innerHTML = document.getElementById(ounceCSODTasksID + '_content').innerHTML; // Copies the featuerd training from the widget to the custom html
+			document.getElementById(ounceCSODTasksID).style.display = 'none'; // Hides the native widget
+			
+			document.getElementById('OunceCustomFeaturedDiv').innerHTML = document.getElementById(ounceCSODFeaturedID + '_content').innerHTML; // Copies the featured training from the widget to the html
+			document.getElementById(ounceCSODFeaturedID).style.display = 'none'; // Hides the widget
+			
+			document.getElementById('OunceCustomUpcomingDiv').innerHTML = document.getElementById(ounceCSODUpcomingID + '_content').innerHTML; // Copies the Upcoming training from the widget to the html
+			document.getElementById(ounceCSODUpcomingID).style.display = 'none'; // Hides the widget
+			
+			if (ounceCountList(ounceCSODFeaturedID) === 0) {document.getElementById('OunceCustomFeaturedContainer').style.display = 'none';};
+			if (ounceCountLinks(ounceCSODUpcomingID) === 0) {document.getElementById('OunceCustomUpcomingContainer').style.display = 'none';};
+			if (ounceCountLinks(ounceCSODTasksID) === 0) {document.getElementById('OunceCustomTasksContainer').style.display = 'none';};
+			
+	</script>
+
+	
+	<!-- End copying here. -->
+	
+	
+	</body>
+</html>
