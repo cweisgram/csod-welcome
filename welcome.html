@@ -179,6 +179,10 @@
 	<!-- This is a good breakpoint. Put the above portion in an HTML widget at the top. Put the various widgets next.
 	Then paste the portion below into another HTML widget. -->
 	
+	<!-- The following DIVs provide containers that the JavaScript at the bottom uses to place content, and also hide if
+	their contents are empty. They can be reordered in any way that works. Right now, this section is under development
+	and contains way more stuff than I would ever reasonably include, but it gives a good idea as to how it could be done. -->
+	
 	<div class="ounce-main-container">
 		<div class="ounce-bottom-box-split">
 			<div class="ounce-bottom-content" id="OunceCustomFeaturedContainer">
@@ -222,6 +226,27 @@
 				</div>
 			</div>
 		</div>
+		<div class="ounce-bottom-box-split">
+			<div class="ounce-bottom-content" id="OunceCustomTranscriptContainer">
+				<h3>Transcript</h3>
+				<div id="OunceCustomTranscriptDiv">
+				</div>
+			</div>
+		</div>
+		<div class="ounce-bottom-box-split">
+			<div class="ounce-bottom-content" id="OunceCustomPendingEvaluationsContainer">
+				<h3>Pending Evaluations</h3>
+				<div id="OunceCustomPendingEvaluationsDiv">
+				</div>
+			</div>
+		</div>
+		<div class="ounce-bottom-box-split">
+			<div class="ounce-bottom-content" id="OunceCustomRequiredContainer">
+				<h3>Reqiored Training</h3>
+				<div id="OunceCustomRequiredDiv">
+				</div>
+			</div>
+		</div>
 	
 	</div>
 	
@@ -244,7 +269,7 @@
 				return listCount;
 			}
 			
-			function ounceCountTable(widgetContentID) {
+			function ounceCountTables(widgetContentID) {
 				// This fucntion uses the ID string of a native widget to count the list items inside. This works for the Featured Trainin widget.
 				var widgetElement = document.getElementById(widgetContentID + '_content').getElementsByTagName('table');
 				var listCount = widgetElement.length;
@@ -273,12 +298,13 @@
 				// These if statements use the functions defined above to determine if the widgets contain any content. If they do not, then they are
 				// hidden. This allows you to turn your widgets into calls to action. For example, instead of having a thing called "Tasks" that is
 				// always there and most of the time says "there are no tasks here", you can have something that says, "You have tasks, and here they are."
+				
 				if (widgetType === 0) {
 					if (ounceCountList(ounceCSODID) === 0) {document.getElementById(ounceCustomDivContainer).style.display = 'none';};
 				} else if (widgetType === 1) {
 					if (ounceCountLinks(ounceCSODID) === 0) {document.getElementById(ounceCustomDivContainer).style.display = 'none';};
 				} else if (widgetType === 2) {
-					if (ounceCountTable(ounceCSODID) === 0) {document.getElementById(ounceCustomDivContainer).style.display = 'none';};
+					if (ounceCountTables(ounceCSODID) === 0) {document.getElementById(ounceCustomDivContainer).style.display = 'none';};
 				} 
 				
 			}
@@ -293,6 +319,9 @@
 			var ounceCSODBrowseID = 'ctl00_ContentPlaceHolder1_widgetLayout_rptWidgets_' + 'ctl04' + '_widgetContainer_ctl00_pnl' + 'Browse';
 			var ounceCSODCalendarID = 'ctl00_ContentPlaceHolder1_widgetLayout_rptWidgets_' + 'ctl05' + '_widgetContainer_ctl00';
 			var ounceCSODMyTrainingID = 'ctl00_ContentPlaceHolder1_widgetLayout_rptWidgets_' + 'ctl06' + '_widgetContainer_ctl00_pnl' + 'MyTraining';
+			var ounceCSODTranscriptID = 'ctl00_ContentPlaceHolder1_widgetLayout_rptWidgets_' + 'ctl09' + '_widgetContainer_ctl00_pnl' + 'MyTraining';
+			var ounceCSODPendEvalID = 'ctl00_ContentPlaceHolder1_widgetLayout_rptWidgets_' + 'ctl07' + '_widgetContainer_ctl00_pnl' + 'PendingEvaluations';
+			var ounceCSODRequiredID = 'ctl00_ContentPlaceHolder1_widgetLayout_rptWidgets_' + 'ctl08' + '_widgetContainer_ctl00_pnl' + 'RequiredTraining';
 			
 			// These next lines each grab the content from the native widgets and move them to the custom made container defined in the HTML above.
 			// In order for this to work properly, this code must fall below the dropped widgets on the welcome page. Othewise, the JavaScript will
@@ -302,8 +331,12 @@
 			ounceCopyAndHide('Featured', ounceCSODFeaturedID, 0);
 			ounceCopyAndHide('Upcoming', ounceCSODUpcomingID, 1);
 			ounceMoveContent('Browse', ounceCSODBrowseID);
-			ounceCopyAndHide('MyTraining', ounceCSODMyTrainingID, 2);
+			ounceCopyAndHide('MyTraining', ounceCSODMyTrainingID, 1);
 			ounceMoveCalendar('Calendar', ounceCSODCalendarID);
+			ounceCopyAndHide('Transcript', ounceCSODTranscriptID, 1);
+			ounceCopyAndHide('PendingEvaluations', ounceCSODPendEvalID, 1);
+			ounceCopyAndHide('Required', ounceCSODRequiredID, 1);
+			
 	
 	</script>
 
