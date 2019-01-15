@@ -207,7 +207,6 @@
 	
 		<script>
 			
-			
 			function ounceCountLinks(widgetContentID) {
 				// This function uses the ID string of a natve widget to count the links inside. This works for the tasks and Upcoming Sessions widgets.
 				var widgetElement = document.getElementById(widgetContentID + '_content');
@@ -222,23 +221,40 @@
 				return listCount;
 			}
 			
-			var ounceCSODTasksID = 'ctl00_ContentPlaceHolder1_widgetLayout_rptWidgets_' + 'ctl00' + '_widgetContainer_ctl00_pnl' + 'Tasks'
-			var ounceCSODUpcomingID = 'ctl00_ContentPlaceHolder1_widgetLayout_rptWidgets_' + 'ctl02' + '_widgetContainer_ctl00_pnl' + 'UpcomingSessions'
-			var ounceCSODFeaturedID = 'ctl00_ContentPlaceHolder1_widgetLayout_rptWidgets_' + 'ctl01' + '_widgetContainer_ctl00_pnl' + 'FeaturedTraining'		
+			function ounceCopyAndHide(thatWidgetName, ounceCSODID, isAlist) {
+				
+				var ounceCustomDiv = 'OunceCustom' + thatWidgetName + 'Div';
+				var ounceCustomDivContainer = 'OunceCustom' + thatWidgetName + 'Container'
+				
+				// This function grabs the content from the native widgets and movse them to the custom made containers defined in the HTML above.
+				document.getElementById(ounceCustomDiv).innerHTML = document.getElementById(ounceCSODID + '_content').innerHTML; // Copies the content from the widget to the custom html
+				document.getElementById(ounceCSODID).style.display = 'none'; // Hides the native widget
+				// These if statements use the functions defined above to determine if the widgets contain any content. If they do not, then they are
+				// hidden. This allows you to turn your widgets into calls to action. For example, instead of having a thing called "Tasks" that is
+				// always there and most of the time says "there are no tasks here", you can have something that says, "You have tasks, and here they are."
+				if (isAlist === true) {
+					if (ounceCountList(ounceCSODID) === 0) {document.getElementById(ounceCustomDivContainer).style.display = 'none';};
+				} else {
+					if (ounceCountLinks(ounceCSODID) === 0) {document.getElementById(ounceCustomDivContainer).style.display = 'none';};
+				}
+				
+				}
 			
-			document.getElementById('OunceCustomTasksDiv').innerHTML = document.getElementById(ounceCSODTasksID + '_content').innerHTML; // Copies the featuerd training from the widget to the custom html
-			document.getElementById(ounceCSODTasksID).style.display = 'none'; // Hides the native widget
+			// These variables point to the ID strings of the widget elements in the CSOD welcome page. I broke them apart so that it's easier to see the
+			// cd1XX part, which changes based on the order that the widgets display, and the widget name at the end. The first and third parts are always
+			// the same.
 			
-			document.getElementById('OunceCustomFeaturedDiv').innerHTML = document.getElementById(ounceCSODFeaturedID + '_content').innerHTML; // Copies the featured training from the widget to the html
-			document.getElementById(ounceCSODFeaturedID).style.display = 'none'; // Hides the widget
+			var ounceCSODTasksID = 'ctl00_ContentPlaceHolder1_widgetLayout_rptWidgets_' + 'ctl00' + '_widgetContainer_ctl00_pnl' + 'Tasks';
+			var ounceCSODUpcomingID = 'ctl00_ContentPlaceHolder1_widgetLayout_rptWidgets_' + 'ctl02' + '_widgetContainer_ctl00_pnl' + 'UpcomingSessions';
+			var ounceCSODFeaturedID = 'ctl00_ContentPlaceHolder1_widgetLayout_rptWidgets_' + 'ctl01' + '_widgetContainer_ctl00_pnl' + 'FeaturedTraining';		
+			// These next lines each grab the content from the native widgets and move them to the custom made container defined in the HTML above.
+			// In order for this to work properly, this code must fall below the dropped widgets on the welcome page. Othewise, the JavaScript will
+			// execute too early and nothing will happen.
 			
-			document.getElementById('OunceCustomUpcomingDiv').innerHTML = document.getElementById(ounceCSODUpcomingID + '_content').innerHTML; // Copies the Upcoming training from the widget to the html
-			document.getElementById(ounceCSODUpcomingID).style.display = 'none'; // Hides the widget
-			
-			if (ounceCountList(ounceCSODFeaturedID) === 0) {document.getElementById('OunceCustomFeaturedContainer').style.display = 'none';};
-			if (ounceCountLinks(ounceCSODUpcomingID) === 0) {document.getElementById('OunceCustomUpcomingContainer').style.display = 'none';};
-			if (ounceCountLinks(ounceCSODTasksID) === 0) {document.getElementById('OunceCustomTasksContainer').style.display = 'none';};
-			
+			ounceCopyAndHide('Tasks', ounceCSODTasksID, false);
+			ounceCopyAndHide('Featured', ounceCSODFeaturedID, true);
+			ounceCopyAndHide('Upcoming', ounceCSODUpcomingID, false);
+						
 	</script>
 
 	
