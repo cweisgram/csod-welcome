@@ -1,0 +1,187 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Welcome Page Content</title>
+	
+	
+	
+</head>
+
+<body>
+	
+	<!-- How this transitional page works. -->
+	
+	<!-- This is a transitional page from our current internal employee welcome page to one
+	that employs a few smarter features and clear calls to action. This page will include:
+
+	* Clarified calls to CSOD's internal features.
+	* Widgets that hide their content when empty.
+	* A little change in the Browse for Training widget.
+
+	Unlike the end goal of this project, this page will not be fully responsive, or use
+	custom DIVs for widet content. -->
+	
+	<!-- BEGIN COPYING FIRST HEADER WIDGET HERE -->
+	
+	<!-- This script adds a viewport definition to the page header. That helps mobile browsers
+	understand the proper width of the webpage is the width of the device or browser window. -->
+	
+	<script>
+		var m = document.createElement('meta'); 
+		m.name = 'viewport'; 
+		m.content = 'width=device-width, initial-scale=1'; 
+		document.head.appendChild(m);
+	</script>
+
+	
+	<!-- The stylesheet does most of the work here. I used CSS classes to define most of the
+	custom elements used in the HTML that follows. This will prevent the main CSOD stylesheet
+	from interfeering with the internal workings of the page. -->
+	
+	<style>
+	
+		/* The Main container class will center content and format text inside. */
+		.ounce-main-container {
+			align-self: center;
+			margin:0 auto;
+			margin-bottom: 18px;
+			width: 80%;
+			padding-bottom: 10px;
+			align-content: center;
+			display:table;
+			box-sizing: border-box;
+			font-size: 12pt;
+			font-family: Open Sans, Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+		}
+			.ounce-main-container a {color: inherit; text-decoration: none;}
+		
+		/* The center-box- classes split up the main calls to action in this design. They also
+		give a target for media queries below. */
+
+		.ounce-center-box-right {
+			width:100%;
+			height:auto;
+			margin-top: 18px;
+			background-color: #efeded;
+			display: table
+		}
+		
+		/* The button and action classes organize the main calls to action. */
+		
+		.ounce-center-grid {display:grid;
+			grid: auto / 150px auto;
+			width: 100%;
+			padding:5px;
+		}
+		.ounce-center-grid > div {
+			text-align: center;
+			
+		}
+		
+		.ounce-action-button {width: 110px; float:left;}
+		.ounce-action-text {text-align: left; font-style: normal; font-weight: 700; font-size: 16pt;  display: table-cell; margin: auto 0;}
+		.ounce-action-text:hover {color: #39207C}
+		
+		/* The list elements on the right hand side give space for aditional calls to action. */
+		.ounce-center-list {
+			display:list-item;
+			background-color:#75787B;
+			padding:4px;
+			margin:20px;
+			list-style-type:none;
+			color:white;
+			font-weight: 600;
+			text-align: left;
+		}
+		
+
+		.ounce-center-list a {color:white; font-weight: 600; text-decoration: none; text-align: center;}
+		.ounce-center-list:hover {background-color: #39207C}
+		
+	</style>
+	
+	
+
+	<img src="images/training-head-x1.jpg" alt="Ounce Training and Performance for Internal Employees" style="width: 100%">
+	
+	<!-- BREAK COPY and PASTE BEGIN LEFT RAIL BELOW -->
+	
+	<div class="ounce-main-container">
+<a href="/MyTeam/MyTeam.aspx"><div class="ounce-center-grid"><div class="ounce-action-button"><img src="images/team-w200.png" width="110px" alt="Manage My Team"></div><div class="ounce-action-text">MANAGE MY TEAM</div></div></a>
+
+<a href="/ui/lms-learner-home/home"><div class="ounce-center-grid"><img src="images/training-w200.png" alt="Manage My Team" class="ounce-action-button"><div class="ounce-action-text">FIND TRAINING</div></div></a>
+
+<div class="ounce-center-grid"><img src="images/goals-w200.png" alt="Manage My Team" class="ounce-action-button"><div class="ounce-action-text">UPDATE MY GOALS</div></div>
+		</div>
+		<div class="ounce-main-container">
+		<div class="ounce-center-box-right">
+			<div class="ounce-center-list"><a href="/phnx/driver.aspx?routename=Social/UniversalProfile/Transcript">See Past Training</a></div>
+			<div class="ounce-center-list"><a href="/phnx/driver.aspx?routename=Social/Communities">Visit Communities</a></div>
+			<div class="ounce-center-list"><a href="/OrgChart/OrgChartList.aspx">View Organizational Chart</a></div>
+			<div class="ounce-center-list"><a href="https://help.csod.com/help/csod_0/OnlineHelp.htm">Find Help with CSOD</a></div>
+		</div>
+	</div>
+	
+	<!-- BREAK COPY and PASTE BEGIN FOOTER PORTION BELOW -->
+	
+	<!-- The following script moves content from the native CSOD Welcome Page Widgets to the contents
+	of the custom HTML section and then hides the original widget. -->
+	
+		<script>
+			
+			function ounceCountLinks(widgetContentID) {
+				// This function uses the ID string of a natve widget to count the links inside. This works for the tasks and Upcoming Sessions widgets.
+				var widgetElement = document.getElementById(widgetContentID + '_content');
+				var linkCount = widgetElement.getElementsByClassName('link').length;
+				return linkCount;
+			}
+			
+			function ounceCountList(widgetContentID) {
+				// This fucntion uses the ID string of a native widget to count the list items inside. This works for the Featured Trainin widget.
+				var widgetElement = document.getElementById(widgetContentID + '_content').getElementsByTagName('li');
+				var listCount = widgetElement.length;
+				return listCount;
+			}
+			
+			function ounceHide(ounceCSODID, widgetType) {
+				
+				// These if statements use the functions defined above to determine if the widgets contain any content. If they do not, then they are
+				// hidden. This allows you to turn your widgets into calls to action. For example, instead of having a thing called "Tasks" that is
+				// always there and most of the time says "there are no tasks here", you can have something that says, "You have tasks, and here they are."
+				
+				if (widgetType === 0) {
+					if (ounceCountList(ounceCSODID) === 0) {document.getElementById(ounceCSODID).style.display = 'none';};
+				} else if (widgetType === 1) {
+					if (ounceCountLinks(ounceCSODID) === 0) {document.getElementById(ounceCSODID).style.display = 'none';};
+				} else if (widgetType === 2) {
+					if (ounceCountTables(ounceCSODID) === 0) {document.getElementById(ounceCSODID).style.display = 'none';};
+				} 
+				
+			}
+			
+			// These variables point to the ID strings of the widget elements in the CSOD welcome page. I broke them apart so that it's easier to see the
+			// cd1XX part, which changes based on the order that the widgets display, and the widget name at the end. The first and third parts are always
+			// the same.
+			
+			var ounceCSODFeaturedID = 'ctl00_ContentPlaceHolder1_widgetLayout_rptWidgets_' + 'ctl02' + '_widgetContainer_ctl00_pnl' + 'FeaturedTraining';
+			var ounceCSODBrowseID = 'ctl00_ContentPlaceHolder1_widgetLayout_rptWidgets_' + 'ctl03' + '_widgetContainer_ctl00_pnl' + 'Browse';
+			var ounceCSODTasksID = 'ctl00_ContentPlaceHolder1_widgetLayout_rptWidgets_' + 'ctl06' + '_widgetContainer_ctl00_pnl' + 'Tasks';
+			var ounceCSODUpcomingID = 'ctl00_ContentPlaceHolder1_widgetLayout_rptWidgets_' + 'ctl07' + '_widgetContainer_ctl00_pnl' + 'UpcomingSessions';
+			// These next lines each grab the content from the native widgets and move them to the custom made container defined in the HTML above.
+			// In order for this to work properly, this code must fall below the dropped widgets on the welcome page. Othewise, the JavaScript will
+			// execute too early and nothing will happen.
+			
+			ounceHide(ounceCSODFeaturedID, 0);
+			ounceHide(ounceCSODBrowseID);
+			ounceHide(ounceCSODTasksID, 1);
+			ounceHide(ounceCSODUpcomingID, 1);
+	
+	</script>
+
+	
+	<!-- END COPY and PASTE HERE. -->
+	
+	
+	</body>
+</html>

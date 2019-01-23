@@ -186,14 +186,14 @@
 	<div class="ounce-main-container">
 		<div class="ounce-bottom-box-split">
 			<div class="ounce-bottom-content" id="OunceCustomFeaturedContainer">
-				<h3>Ounce Featured Training</h3>
+				<h3>Here is some training that the Ounce is featuring.</h3>
 				<div id="OunceCustomFeaturedDiv">
 				</div>
 			</div>
 		</div>
 		<div class="ounce-bottom-box-split">
 			<div class="ounce-bottom-content" id="OunceCustomUpcomingContainer">
-				<h3>Your Scheduled Training</h3>
+				<h3>You have some events coming up.</h3>
 				<div id="OunceCustomUpcomingDiv">
 				</div>
 			</div>
@@ -207,14 +207,14 @@
 		</div>
 		<div class="ounce-bottom-box-split">
 			<div class="ounce-bottom-content" id="OunceCustomBrowseContainer">
-				<h3>Browse for Training</h3>
+				<h3>Look at the subjects below to find relevant training.</h3>
 				<div id="OunceCustomBrowseDiv">
 				</div>
 			</div>
 		</div>
 		<div class="ounce-bottom-box-split">
 			<div class="ounce-bottom-content" id="OunceCustomMyTrainingContainer">
-				<h3>Browse My Training</h3>
+				<h3>Your Training</h3>
 				<div id="OunceCustomMyTrainingDiv">
 				</div>
 			</div>
@@ -265,13 +265,6 @@
 			function ounceCountList(widgetContentID) {
 				// This fucntion uses the ID string of a native widget to count the list items inside. This works for the Featured Trainin widget.
 				var widgetElement = document.getElementById(widgetContentID + '_content').getElementsByTagName('li');
-				var listCount = widgetElement.length;
-				return listCount;
-			}
-			
-			function ounceCountTables(widgetContentID) {
-				// This fucntion uses the ID string of a native widget to count the list items inside. This works for the Featured Trainin widget.
-				var widgetElement = document.getElementById(widgetContentID + '_content').getElementsByTagName('table');
 				var listCount = widgetElement.length;
 				return listCount;
 			}
