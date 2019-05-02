@@ -35,111 +35,154 @@
 	
 	<style>
 	
-		/* The Main container class will center content and format text inside. */
 		.ounce-main-container {
 			align-self: center;
 			max-width: 1500px;
-			margin:0 auto;
+			margin: 0 auto;
 			margin-bottom: 18px;
 			width: 80%;
 			padding-bottom: 10px;
 			align-content: center;
-			display:table;
+			display: table;
 			box-sizing: border-box;
 			font-size: 12pt;
 			font-family: Open Sans, Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
 		}
-		
 		/* The center-box- classes split up the main calls to action in this design. They also
-		give a target for media queries below. */
+				   give a target for media queries below. */
+
 		.ounce-center-box-left {
 			width: 60%;
 			height: 100%;
 			float: left;
-			color:#75787B;
+			color: #75787B;
 		}
 		.ounce-center-box-right {
-			width:40%;
+			width: 40%;
 			max-width: 400px;
-			height:auto;
+			height: auto;
 			margin-top: 18px;
 			float: left;
 			background-color: #efeded;
 			display: table
 		}
-		
 		/* The button and action classes organize the main calls to action. */
+
 		.ounce-center-box-left-content {
-			height:auto;
-			width:88%;
+			height: auto;
+			width: 88%;
 			margin: 0 auto;
 			display: block;
-			float:right
+			float: right
 		}
-		.ounce-center-button {float:left;
-			padding:5px;
+		.ounce-center-button {
+			float: left;
+			padding: 5px;
 			width: 25%;
 			max-width: 175px;
 			margin: 0 auto;
 		}
-		.ounce-center-button:hover {color: #39207C}
-		.ounce-action-button {width: 100%; height: auto}
-		.ounce-action-text {text-align: center; font-style: normal; font-weight: 700; font-size: 16pt;}
-		
+		.ounce-center-button:hover {
+			color: #39207C
+		}
+		.ounce-action-button {
+			width: 100%;
+			height: auto
+		}
+		.ounce-action-text {
+			text-align: center;
+			font-style: normal;
+			font-weight: 700;
+			font-size: 16pt;
+		}
 		/* The list elements on the right hand side give space for aditional calls to action. */
+
 		.ounce-center-list {
-			display:list-item;
-			background-color:#75787B;
-			padding:4px;
-			margin:20px;
-			list-style-type:none;
-			color:white;
+			display: list-item;
+			background-color: #75787B;
+			margin: 20px;
+			list-style-type: none;
+			color: white;
 			font-weight: 600;
 			text-align: center;
 		}
-		.ounce-center-list a {color:white; font-weight: 600; text-decoration: none;}
-		.ounce-center-list:hover {background-color: #39207C}
-
+		.ounce-center-list a {
+			display:block;
+			color: white;
+			font-weight: 600;
+			padding: 4px;
+			text-decoration: none;
+		}
+		.ounce-center-list:hover {
+			background-color: #39207C
+		}
 		/* The bottom boxes create responsive places for content. */
+
 		.ounce-bottom-box-split {
-			width:50%;
-			float:left;
+			width: 50%;
+			float: left;
 			box-sizing: border-box;
 		}
 		.ounce-bottom-content {
-			padding:4px;
-			margin:10px;
+			padding: 4px;
+			margin: 10px;
 			font-weight: 600;
 			vertical-align: middle;
 			background-color: #efeded;
 			background-repeat: no-repeat;
 			background-position: left;
 		}
-		.ounce-bottom-content h3 {margin-top: .25em; margin-bottom: .25em;}
-		
+		.ounce-bottom-content h3 {
+			margin-top: .25em;
+			margin-bottom: .25em;
+		}
 		/* Changes for smaller desktop screens and some tablets. Mainly decreases font sizes. */
+
 		@media only screen and (max-width: 1200px) {
-			.ounce-center-list a {font-size: 10pt}
-			.ounce-action-text {font-size: 12pt}
-			.ounce-center-box-right {margin-top: 10px}
-		}		
-		
+			.ounce-center-list a {
+				font-size: 10pt
+			}
+			.ounce-action-text {
+				font-size: 12pt
+			}
+			.ounce-center-box-right {
+				margin-top: 10px
+			}
+		}
 		/* Main responsive breakpoint. Takes the main content splits and increases width to 100%. */
+
 		@media only screen and (max-width: 900px) {
-			.ounce-main-container {width: 100%}
-			.ounce-center-box-left {width: 100%}
-			.ounce-center-box-left-content {width: 88%; margin: 0 auto}
-			.ounce-center-box-right {width: 100%; max-width: inherit}
-			.ounce-bottom-box-split {width: 100%}
-			.ounce-bottom-content {background-image: none}
+			.ounce-main-container {
+				width: 100%
+			}
+			.ounce-center-box-left {
+				width: 100%
+			}
+			.ounce-center-box-left-content {
+				width: 88%;
+				margin: 0 auto
+			}
+			.ounce-center-box-right {
+				width: 100%;
+				max-width: inherit
+			}
+			.ounce-bottom-box-split {
+				width: 100%
+			}
+			.ounce-bottom-content {
+				background-image: none
+			}
 		}
-		
 		/* Last breakpoint for narrow screens. May begin hiding content here. */
+
 		@media only screen and (max-width: 450px) {
-			.ounce-center-list {font-size: 9pt}
-			.ounce-action-text {font-size: 10pt}
+			.ounce-center-list {
+				font-size: 9pt
+			}
+			.ounce-action-text {
+				font-size: 10pt
+			}
 		}
-		
 	</style>
 	
 
